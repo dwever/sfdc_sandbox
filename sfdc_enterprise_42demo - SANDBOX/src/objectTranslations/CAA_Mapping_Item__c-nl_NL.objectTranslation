@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CAA Mapping Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CAA Mapping Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- CAA Configuration --></label>
+        <name>CAA_Configuration__c</name>
+        <relationshipLabel><!-- CAA Mapping Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Value that will be used to populate the target field. The target field MUST be a text or picklist field and not exceed 255 characters.
+
+Either a Hard Coded Value or a Source Field is mandatory, only one of both may be provided --></help>
+        <label><!-- Hardcoded Value --></label>
+        <name>Hardcoded_Value__c</name>
+    </fields>
+    <fields>
+        <help><!-- API Name of the field in the source object
+
+Either a Hard Coded Value or a Source Field is mandatory, only one of both may be provided --></help>
+        <label><!-- Source Field --></label>
+        <name>Source_Field__c</name>
+    </fields>
+    <fields>
+        <help><!-- API Name of the field in the target object --></help>
+        <label><!-- Target Field --></label>
+        <name>Target_Field__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>CAA Mapping Item Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Source --></label>
+            <section>Source</section>
+        </sections>
+        <sections>
+            <label><!-- Target --></label>
+            <section>Target</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Id cannot be the target field --></errorMessage>
+        <name>Cannot_Use_Id_as_a_Target</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Deduplication field in target cannot be mapped to a hardcoded value --></errorMessage>
+        <name>Hardcoded_Value_Not_Allowed_On_Dedupe</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- You need to provide either a Source Field, or a Hardcoded Value --></errorMessage>
+        <name>Source_Field_Or_Value_Mandatory</name>
+    </validationRules>
+</CustomObjectTranslation>

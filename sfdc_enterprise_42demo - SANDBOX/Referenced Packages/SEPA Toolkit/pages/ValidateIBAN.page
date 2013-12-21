@@ -1,0 +1,101 @@
+<apex:page controller="SEPA_Toolkit.ValidateIBANController" tabStyle="SEPA_Toolkit__Validate_IBAN__tab">
+    <apex:sectionHeader title="SEPA Toolkit" subtitle="{!$Label.sepa_toolkit__SEPA_LBL_TITLE_IBAN_VALIDATION}"/>
+    <apex:form id="topForm">
+        <!-- ### Page Messages ### --> 
+        <apex:pageMessages escape="false" id="pmTop"/>   
+        
+        <!-- ### PageBlock ### --> 
+        <apex:pageBlock id="pbValidation" mode="detail">
+
+            <!-- ### Select Radio buttons ### -->
+            <apex:outputPanel layout="block" style="height:30px">
+                <apex:outputPanel layout="block" style="float:left;width:120px">    
+                    <apex:selectRadio value="{!selectedOption}">
+                        <apex:actionSupport rerender="pbValidation,pmTop" event="onchange" status="optionstatus"/>
+                        <apex:selectOptions value="{!ValidationOptions}"/>
+                    </apex:selectRadio>
+                </apex:outputPanel>                    
+                <apex:outputPanel layout="block" style="float:left;width:20px;margin-top:5px">    
+                    <apex:actionStatus id="optionstatus">
+                        <apex:facet name="start">
+                            <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                        </apex:facet>
+                    </apex:actionStatus> 
+                </apex:outputPanel>                    
+            </apex:outputPanel>
+
+            <!-- ### Single validation ### -->
+            <apex:outputPanel id="opSingle" style="clear: both" layout="block" rendered="{!selectedOption == 'Single'}">
+                <apex:pageBlockSection title="{!$Label.sepa_toolkit__SEPA_LBL_SECTION_SINGLE}" collapsible="false" columns="1" id="pbsSingle">
+                    <apex:pageBlockSectionItem id="pbsiSingle">
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_IBAN}"/>
+                        <apex:outputPanel id="opSingle2">
+                            <apex:inputText value="{!IBAN}" style="width:150px" />
+                            <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_VALIDATE}" action="{!Check}" rerender="opSingle,pmTop" status="checkstatus" style="margin-left:5px;" id="btnSingle"/>
+                            <apex:outputPanel style="margin-left:5px; margin-top:5px;">
+                                <apex:actionStatus id="checkstatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                                    </apex:facet>
+                                    <apex:facet name="stop">
+                                        <apex:outputText value="{!checkValid}" style="{!IF(checkValid=='NOK','color:#FF0000;','color:#00CC00')}"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>            
+            </apex:outputPanel>   
+
+            <!-- ### Batch validation ### -->
+            <apex:outputPanel id="opBatch" style="clear: both" layout="block" rendered="{!selectedOption == 'Batch'}">
+                <apex:pageBlockSection title="{!$Label.sepa_toolkit__SEPA_LBL_SECTION_BATCH}" collapsible="false" columns="1">
+                    <!-- OBJECT SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_OBJECT}"/>
+                        <apex:outputPanel >
+                            <apex:outputPanel layout="block" style="float:left">    
+                                <apex:selectList value="{!selectedObject}" size="1">
+                                    <apex:actionSupport rerender="opBatch" event="onchange" status="objselectstatus"/>
+                                    <apex:selectOptions value="{!Objects}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>                    
+                            <apex:outputPanel layout="block" style="float:left;margin-left:5px;margin-top:5px">    
+                                <apex:actionStatus id="objselectstatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>                    
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                     
+                    <!-- FIELD SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_FIELD}"/>
+                        <apex:selectList value="{!selectedField}" size="1" disabled="{!ISNULL(selectedObject) || selectedObject==''}">
+                            <apex:selectOptions value="{!Fields}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- START BATCH BUTTON -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value=""/>
+                        <apex:outputPanel layout="block" style="height:100%">
+                            <apex:outputPanel style="margin-top:5px;margin-left:5px;">
+                                <apex:actionStatus id="batchstatus">
+                                    <apex:facet name="stop">
+                                        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_START_BATCH}" action="{!StartBatch}" rerender="topForm" status="batchstatus"/>
+                                    </apex:facet>
+                                    <apex:facet name="start">
+                                        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_START_BATCH}" disabled="true"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>   
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
