@@ -1,0 +1,26 @@
+<apex:page controller="SEPA_Toolkit.ConvertIBANController" showHeader="false" sidebar="false">
+	<style> body { background:transparent; } </style>
+    <apex:form id="topForm">
+        <!-- ### Single validation ### -->
+		<apex:outputPanel style="margin: 0px 0px 0px 0px;">
+	        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BANK_ACCOUNT}" style="width:150px;margin-left:5px"/>
+	        <apex:inputText value="{!BBAN}" style="width:150px;margin-left:5px"/>
+	        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BIC}" style="width:150px;margin-left:5px"/>
+	        <apex:inputText value="{!BIC}" style="width:150px;margin-left:5px"/>
+	        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_CONVERT}" action="{!ConvertToIBAN}" status="checkstatus" style="margin-left:5px;margin-top:5px;" rerender="topForm"/>
+	        <apex:outputPanel style="margin-left:5px; margin-top:5px;">
+	            <apex:actionStatus id="checkstatus">
+	                <apex:facet name="start">
+	                    <apex:outputText value="{!$Label.sepa_toolkit__SEPA_BTN_CONVERT}..."/>
+	                </apex:facet>
+	            </apex:actionStatus> 
+	        </apex:outputPanel>
+			<apex:outputPanel id="ibanOutput">
+		        <br/><br/><apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_IBAN_DIGITAL}:" style="font-weight:bold;width:150px;margin-left:5px"/>
+		        <br/><apex:outputText value="{!IBAN}" style="width:150px;margin-left:5px"/>
+		        <br/><apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_IBAN_LETTER}:" style="font-weight:bold;width:150px;margin-left:5px"/>
+		        <br/><apex:outputText value="{!IBAN_FORMAT}" style="width:150px;margin-left:5px"/>
+			</apex:outputPanel>
+		</apex:outputPanel>
+    </apex:form>
+</apex:page>

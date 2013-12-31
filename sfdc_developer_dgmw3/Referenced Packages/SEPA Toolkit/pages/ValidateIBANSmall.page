@@ -1,0 +1,21 @@
+<apex:page controller="SEPA_Toolkit.ValidateIBANController" showHeader="false" sidebar="false">
+	<style> body { background:transparent; } </style>
+    <apex:form id="topForm">
+        <!-- ### Single validation ### -->
+		<apex:outputPanel style="margin: 0px 0px 0px 0px;">
+	        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_IBAN}" style="width:150px;margin-left:5px"/>
+	        <apex:inputText value="{!IBAN}" style="width:150px;margin-left:5px"/>
+	        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_VALIDATE}" action="{!Check}" status="checkstatus" style="margin-left:5px;margin-top:5px;" rerender="topForm"/>
+	        <apex:outputPanel style="margin-left:5px; margin-top:5px;">
+	            <apex:actionStatus id="checkstatus">
+	                <apex:facet name="start">
+	                    <apex:outputText value="{!$Label.sepa_toolkit__SEPA_BTN_VALIDATE}..."/>
+	                </apex:facet>
+	                <apex:facet name="stop">
+	                    <apex:outputText value="{!checkValid}" style="{!IF(checkValid=='NOK','color:#FF0000;','color:#00CC00')}"/>
+	                </apex:facet>
+	            </apex:actionStatus> 
+	        </apex:outputPanel>
+		</apex:outputPanel>
+    </apex:form>
+</apex:page>

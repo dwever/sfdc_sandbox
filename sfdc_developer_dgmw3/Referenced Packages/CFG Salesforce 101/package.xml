@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CFG Salesforce 101</fullName>
+    <apiAccessLevel>Unrestricted</apiAccessLevel>
+    <description>This site is for non-profit users and potential users of Salesforce.  It is provided and maintained by Cloud for Good.</description>
+    <namespacePrefix>npsf101</namespacePrefix>
+    <types>
+        <members>CFG_Salesforce_101</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>CFG_Salesforce_101</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>CFG_Salesforce_101</members>
+        <members>CFG_Salesforce_101/Cloud_for_Good_Logo.png</members>
+        <name>Document</name>
+    </types>
+    <version>29.0</version>
+</Package>

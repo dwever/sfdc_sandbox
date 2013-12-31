@@ -1,0 +1,158 @@
+<apex:page controller="SEPA_Toolkit.ConvertIBANController" tabStyle="SEPA_Toolkit__Convert_to_IBAN__tab">
+    <apex:sectionHeader title="SEPA Toolkit" subtitle="{!$Label.sepa_toolkit__SEPA_LBL_TITLE_IBAN_CONVERSION}"/>
+    <apex:form id="topForm">
+        <!-- ### Page Messages ### --> 
+        <apex:pageMessages escape="false" id="pmTop"/>   
+        
+        <!-- ### PageBlock ### --> 
+        <apex:pageBlock id="pbValidation" mode="detail">
+
+            <!-- ### Select Radio buttons ### -->
+            <apex:outputPanel layout="block" style="height:30px">
+                <apex:outputPanel layout="block" style="float:left;width:140px">    
+                    <apex:selectRadio value="{!selectedOption}">
+                        <apex:actionSupport rerender="pbValidation,pmTop" event="onchange" status="optionstatus"/>
+                        <apex:selectOptions value="{!ValidationOptions}"/>
+                    </apex:selectRadio>
+                </apex:outputPanel>                    
+                <apex:outputPanel layout="block" style="float:left;width:20px;margin-top:5px">    
+                    <apex:actionStatus id="optionstatus">
+                        <apex:facet name="start">
+                            <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                        </apex:facet>
+                    </apex:actionStatus> 
+                </apex:outputPanel>                    
+            </apex:outputPanel>
+
+            <!-- ### Single conversion ### -->
+            <apex:outputPanel id="opSingle" style="clear: both" layout="block" rendered="{!selectedOption == 'Single'}">
+                <apex:pageBlockSection title="{!$Label.sepa_toolkit__SEPA_LBL_SECTION_SINGLE}" collapsible="false" columns="1" id="pbsSingle">
+
+                    <apex:pageBlockSectionItem id="pbsiBBAN">
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BANK_ACCOUNT}"/>
+                        <apex:inputText value="{!BBAN}"/>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem id="pbsiBIC">
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BIC}"/>
+                        <apex:inputText value="{!BIC}"/>
+                    </apex:pageBlockSectionItem>
+
+                    <apex:pageBlockSectionItem id="pbsiIBAN">
+                        <apex:outputText value="<b>{!$Label.sepa_toolkit__SEPA_LBL_IBAN_DIGITAL}</b>" escape="false"/>
+                        <apex:outputText value="{!IBAN}"/>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem id="pbsiIBANFormat">
+                        <apex:outputText value="<b>{!$Label.sepa_toolkit__SEPA_LBL_IBAN_LETTER}</b>" escape="false"/>
+                        <apex:outputText value="{!IBAN_FORMAT}"/>
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem id="pbsiConvert">
+                        <apex:outputText value=""/>
+                        <apex:outputPanel >
+                            <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_CONVERT}" action="{!ConvertToIBAN}" rerender="opSingle,pmTop" status="convertstatus"/>
+                            <apex:outputPanel style="margin-left:5px; margin-top:5px;">
+                                <apex:actionStatus id="convertstatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                </apex:pageBlockSection>            
+            </apex:outputPanel>   
+
+            <!-- ### Batch validation ### -->
+            <apex:outputPanel id="opBatch" style="clear: both" layout="block" rendered="{!selectedOption == 'Batch'}">
+                
+                <!-- WARNING: Updating field -->
+                <apex:pageMessage id="pmWarning" escape="false" summary="{!$Label.sepa_toolkit__SEPA_MSG_UPDATE_WARNING}" 
+                title="{!$Label.sepa_toolkit__SEPA_LBL_WARNING}" severity="warning" strength="2" rendered="{!(selectedStoreIBANDigitalField!='' || selectedStoreIBANLetterField!='') && selectedOption='Batch'}"/>        
+
+                <apex:pageBlockSection title="{!$Label.sepa_toolkit__SEPA_LBL_SECTION_BATCH}" collapsible="false" columns="1">
+
+                    <!-- OBJECT SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_OBJECT}"/>
+                        <apex:outputPanel >
+                            <apex:outputPanel layout="block" style="float:left">    
+                                <apex:selectList value="{!selectedObject}" size="1">
+                                    <apex:actionSupport rerender="opBatch" event="onchange" status="objselectstatus"/>
+                                    <apex:selectOptions value="{!Objects}"/>
+                                </apex:selectList>
+                            </apex:outputPanel>                    
+                            <apex:outputPanel layout="block" style="float:left;margin-left:5px;margin-top:5px">    
+                                <apex:actionStatus id="objselectstatus">
+                                    <apex:facet name="start">
+                                        <apex:image value="/img/loading32.gif" width="16" height="16"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>                    
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- BANK ACCOUNT FIELD SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BANK_ACCOUNT_FIELD}"/>
+                        <apex:selectList value="{!selectedBankAccountField}" size="1" disabled="{!ISNULL(selectedObject) || selectedObject==''}">
+                            <apex:selectOptions value="{!Fields}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- BIC FIELD SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_BIC_FIELD}"/>
+                        <apex:selectList value="{!selectedBICField}" size="1" disabled="{!ISNULL(selectedObject) || selectedObject==''}">
+                            <apex:selectOptions value="{!Fields}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- IBAN DIGITAL FIELD SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_STORE_IBAN_DIGITAL_FIELD}"/>
+                        <apex:selectList value="{!selectedStoreIBANDigitalField}" size="1" disabled="{!ISNULL(selectedObject) || selectedObject==''}">
+                            <apex:actionSupport event="onchange" rerender="topForm"/>
+                            <apex:selectOptions value="{!FieldsForUpdate}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+                     
+                    <!-- IBAN LETTER FIELD SELECTOPTION -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_STORE_IBAN_LETTER_FIELD}"/>
+                        <apex:selectList value="{!selectedStoreIBANLetterField}" size="1" disabled="{!ISNULL(selectedObject) || selectedObject==''}">
+                            <apex:actionSupport event="onchange" rerender="topForm"/>
+                            <apex:selectOptions value="{!FieldsForUpdate}"/>
+                        </apex:selectList>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- CHECK ON VALID IBAN -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value="{!$Label.sepa_toolkit__SEPA_LBL_CHECK_FOR_IBAN_FIELD}"/>
+                        <apex:inputCheckbox value="{!checkOnExistingIBAN}"/>
+                    </apex:pageBlockSectionItem>
+
+                    <!-- START BATCH BUTTON -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputText value=""/>
+                        <apex:outputPanel layout="block" style="height:100%">
+                            <apex:outputPanel style="margin-top:5px;margin-left:5px;">
+                                <apex:actionStatus id="batchstatus">
+                                    <apex:facet name="stop">
+                                        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_START_BATCH}" action="{!StartBatch}" rerender="topForm" status="batchstatus"/>
+                                    </apex:facet>
+                                    <apex:facet name="start">
+                                        <apex:commandButton value="{!$Label.sepa_toolkit__SEPA_BTN_START_BATCH}" disabled="true"/>
+                                    </apex:facet>
+                                </apex:actionStatus> 
+                            </apex:outputPanel>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:outputPanel>   
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

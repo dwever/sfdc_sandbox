@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>SEPA_BTN_CONVERT</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_BTN_CONVERT</shortDescription>
+        <value>Convert</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_BTN_START_BATCH</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_BTN_START_BATCH</shortDescription>
+        <value>Start Batch</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_BTN_VALIDATE</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_BTN_VALIDATE</shortDescription>
+        <value>Validate</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BANK_ACCOUNT</fullName>
+        <categories>SEPA,IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BANK_ACCOUNT</shortDescription>
+        <value>Bank account</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BANK_ACCOUNT_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BANK_ACCOUNT_FIELD</shortDescription>
+        <value>Bank account field</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH</shortDescription>
+        <value>Batch</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_ALREADY_RUNNING</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_ALREADY_RUNNING</shortDescription>
+        <value>The Batch Job is already running. Please try again later.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_CLASS_NOT_FOUND</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_CLASS_NOT_FOUND</shortDescription>
+        <value>No ApexClass found with the name SEPABatchJob for namespace SEPA_Toolkit.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_CONVERT_SAME_FIELD_SELECTED</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_CONVERT_SAME_FIELD_SELECTED</shortDescription>
+        <value>Can&apos;t select the same field to be updated.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_CONVERT_SELECT_FIELD_TO_UPDATE</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_CONVERT_SELECT_FIELD_TO_UPDATE</shortDescription>
+        <value>-- Not applicable --</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_NO_CONVERT_FIELD_SELECTED</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_NO_CONVERT_FIELD_SELECTED</shortDescription>
+        <value>No field for bank account or bic/country code selected.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_NO_FIELD_SELECTED</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_NO_FIELD_SELECTED</shortDescription>
+        <value>No field selected.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_NO_OBJECT_SELECTED</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_NO_OBJECT_SELECTED</shortDescription>
+        <value>No object selected.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BATCH_SUCCESS</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BATCH_SUCCESS</shortDescription>
+        <value>Batch job started successfully. The results will be sent to your user email address.</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BIC</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BIC</shortDescription>
+        <value>BIC / Country code</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_BIC_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_BIC_FIELD</shortDescription>
+        <value>BIC / Country code field</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_CHECK_FOR_IBAN_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_CHECK_FOR_IBAN_FIELD</shortDescription>
+        <value>Check for IBAN</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_FIELD</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_FIELD</shortDescription>
+        <value>Field</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_IBAN</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_IBAN</shortDescription>
+        <value>IBAN</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_IBAN_DIGITAL</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_IBAN_DIGITAL</shortDescription>
+        <value>IBAN (digital)</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_IBAN_LETTER</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_IBAN_LETTER</shortDescription>
+        <value>IBAN (letter)</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_OBJECT</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_OBJECT</shortDescription>
+        <value>Object</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SECTION_BATCH</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SECTION_BATCH</shortDescription>
+        <value>Batch validation</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SECTION_SINGLE</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SECTION_SINGLE</shortDescription>
+        <value>Single validation</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SELECT_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SELECT_FIELD</shortDescription>
+        <value>-- Select Field --</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SELECT_OBJECT</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SELECT_OBJECT</shortDescription>
+        <value>-- Select Object --</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SINGLE</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SINGLE</shortDescription>
+        <value>Single</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SINGLE_CONVERT_BIC_LENGTH</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SINGLE_CONVERT_BIC_LENGTH</shortDescription>
+        <value>BIC code should be 6 or more characters long</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SINGLE_CONVERT_COUNTRY_CODE_NOT_VALID</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SINGLE_CONVERT_COUNTRY_CODE_NOT_VALID</shortDescription>
+        <value>Country code is not valid</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SINGLE_CONVERT_NO_BANK_ACCOUNT_FILLED</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SINGLE_CONVERT_NO_BANK_ACCOUNT_FILLED</shortDescription>
+        <value>No bank account number filled in</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_SINGLE_CONVERT_NO_BIC_FILLED</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_SINGLE_CONVERT_NO_BIC_FILLED</shortDescription>
+        <value>Fill in a BIC or country code</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_STORE_IBAN_DIGITAL_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_STORE_IBAN_DIGITAL_FIELD</shortDescription>
+        <value>IBAN (digital) store in</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_STORE_IBAN_LETTER_FIELD</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_STORE_IBAN_LETTER_FIELD</shortDescription>
+        <value>IBAN (letter) store in</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_TITLE_IBAN_CONVERSION</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_TITLE_IBAN_CONVERSION</shortDescription>
+        <value>Convert to IBAN</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_TITLE_IBAN_VALIDATION</fullName>
+        <categories>SEPA, IBAN</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_TITLE_IBAN_VALIDATION</shortDescription>
+        <value>IBAN validation</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_LBL_WARNING</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_LBL_WARNING</shortDescription>
+        <value>Warning:</value>
+    </labels>
+    <labels>
+        <fullName>SEPA_MSG_UPDATE_WARNING</fullName>
+        <categories>SEPA, IBAN, BATCH</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>SEPA_MSG_UPDATE_WARNING</shortDescription>
+        <value>The batch will update fields in your organization. Make sure you are updating the right fields. Existing values will be overwritten. First try to run the batch without updating fields!</value>
+    </labels>
+</CustomLabels>
